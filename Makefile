@@ -1,6 +1,8 @@
 
 NAME = libft.a
 
+CC = cc
+
 SRCS = ft_atoi.c \
        ft_isalpha.c \
        ft_memchr.c  \
@@ -12,7 +14,6 @@ SRCS = ft_atoi.c \
        ft_isascii.c \
        ft_memcmp.c \
        ft_strchr.c \
-       ft_strstr.c \
        ft_calloc.c \
        ft_isdigit.c \
        ft_memcpy.c \
@@ -49,30 +50,37 @@ SRCS_BONUS = ft_lstadd_front_bonus.c \
 
 HEADERS = libft.h
 
-OBJECTS = $(SRCS:.c=.o)
-
-OBJECTS_BONUS = $(SRCS_BONUS:.c=.o)
+OBJECTS = $(addprefix .hidden/, $(SRCS:.c=.o))
+DEPS = $(OBJECTS:.o=.d)
+OBJECTS_BONUS = $(addprefix .hidden/, $(SRCS_BONUS:.c=.o))
+DEPS_BONUS = $(OBJECTS_BONUS:.o=.d)
 
 CFLAGS = -Wall -Wextra -Werror
+DEPFLAGS	= -MMD -MP
 
-%.o: %.c $(HEADERS)
-	$(CC) $(CFLAGS) -c $< -o $@ -I.
+.hidden/%.o: %.c
+	@mkdir .hidden -p
+	@$(CC) $(CFLAGS) $(DEPFLAGS) -c $< -o $@ -I.
 
-all: $(NAME)
+all:
+	@$(MAKE) --no-print-directory -s $(NAME)
 
 $(NAME): $(OBJECTS)
-	ar rcs $(NAME) $(OBJECTS)
+	echo objects done
+	@ar rcs $(NAME) $(OBJECTS)
+	echo $(NAME) done
 
 clean:
-	$(RM) $(OBJECTS) $(OBJECTS_BONUS)
+	$(RM) -rf .hidden
 
 fclean: clean
 	$(RM) $(NAME)
 
 bonus:
-	$(MAKE) $(NAME) SRCS="$(SRCS) $(SRCS_BONUS)"
+	@$(MAKE) -s --no-print-directory $(NAME) SRCS="$(SRCS) $(SRCS_BONUS)"
 
 re: fclean
-	$(MAKE) all
+	@$(MAKE) -s --no-print-directory $(NAME)
 
+-include $(DEPS)
 .PHONY: re all clean fclean bonus

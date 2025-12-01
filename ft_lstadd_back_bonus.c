@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: geymat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 08:10:02 by geymat            #+#    #+#             */
-/*   Updated: 2023/11/10 10:52:09 by geymat           ###   ########.fr       */
+/*   Updated: 2025/12/01 14:38:26 by geymat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,12 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	if (!lst)
 		return ;
-	while (*lst && (*lst)->next)
-	{
-		lst = &((*lst)->next);
-	}
 	if (!(*lst))
 	{
 		*lst = new;
 		return ;
 	}
+	while ((*lst)->next)
+		lst = &((*lst)->next);
 	(*lst)->next = new;
 }

@@ -6,7 +6,7 @@
 /*   By: geymat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 00:29:07 by geymat            #+#    #+#             */
-/*   Updated: 2023/11/16 14:25:46 by geymat           ###   ########.fr       */
+/*   Updated: 2025/12/01 15:43:57 by geymat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,7 @@
 
 void	*ft_memset(void *str, int c, size_t num)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < num)
-	{
-		((char *)str)[i] = c;
-		i++;
-	}
+	while (num--)
+		((char *)str)[num] = c;
 	return (str);
 }

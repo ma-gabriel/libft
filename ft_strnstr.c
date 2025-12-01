@@ -6,33 +6,24 @@
 /*   By: geymat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 03:57:07 by geymat            #+#    #+#             */
-/*   Updated: 2023/11/16 19:21:14 by geymat           ###   ########.fr       */
+/*   Updated: 2025/12/01 17:27:00 by geymat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "libft.h"
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	i;
-	size_t	j;
+	const size_t	little_len = ft_strlen(little);
 
 	if (!little[0])
-		return ((char *)big);
-	i = 0;
-	while (big[i] && i < len)
+		return ((char *) big);
+	while (*big && little_len <= len--)
 	{
-		if (big[i] == little[0] && i < len)
-		{
-			j = 0;
-			while (big[i + j] == little[j] && i + j < len)
-			{
-				j ++;
-				if (!little[j])
-					return ((char *)big + i);
-			}
-		}
-		i++;
+		if (!ft_strncmp(big, little, little_len))
+			return ((char *) big);
+		big++;
 	}
 	return (0);
 }

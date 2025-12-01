@@ -6,7 +6,7 @@
 /*   By: geymat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 02:03:25 by geymat            #+#    #+#             */
-/*   Updated: 2023/11/18 15:59:32 by geymat           ###   ########.fr       */
+/*   Updated: 2025/12/01 16:14:33 by geymat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 
 	if (!f || !s)
 		return ;
-	i = -1;
-	while (s[++i])
+	i = 0;
+	while (s[i])
+	{
 		f(i, s + i);
+		i++;
+	}
 }

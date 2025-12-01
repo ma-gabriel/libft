@@ -11,56 +11,27 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-
-static int	find_end(char const *s1, char const *set)
-{
-	size_t	set_i;
-	size_t	i;
-	size_t	temp;
-	size_t	check;
-
-	if (!(*(s1 + 1)))
-		return (-1);
-	temp = 0;
-	i = -1;
-	while (s1[++i])
-	{
-		set_i = -1;
-		check = 1;
-		while (set[++set_i])
-			if (s1[i] == set[set_i])
-				check = 0;
-		if (check)
-			temp = i;
-	}
-	return (temp);
-}
+#include "libft.h"
 
 char	*ft_strtrim(char const *s, char const *set)
 {
+	const char	*save = s;
+	size_t		start;
 	char		*res;
-	size_t		temp;
-	size_t		set_i;
-	size_t		i;
-	char const	*s1;
 
-	temp = 1;
-	s1 = s - 1;
-	while (*++s1 && temp)
+	while (ft_strchr((char *) set, *s))
 	{
-		temp = 0;
-		set_i = -1;
-		while (set[++set_i])
-			if (*s1 == set[set_i])
-				temp = 1;
+		if (!*s)
+			return (ft_strdup(""));
+		s++;
 	}
-	temp = find_end(--s1, set);
-	res = (char *) malloc((temp + 2));
+	start = s - save;
+	s += ft_strlen(s) + 1;
+	while (ft_strchr((char *) set, *(s - 1)))
+		s--;
+	res = malloc(ft_strlen(save) - start - ft_strlen(s) + 1);
 	if (!res)
 		return (NULL);
-	i = -1;
-	while (++i + 1 <= temp + 1)
-		res[i] = s1[i];
-	res[temp + 1] = 0;
+	ft_strlcpy(res, save + start, ft_strlen(save) - start - ft_strlen(s) + 1);
 	return (res);
 }

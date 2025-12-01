@@ -6,38 +6,37 @@
 /*   By: geymat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:25:08 by geymat            #+#    #+#             */
-/*   Updated: 2023/11/12 19:16:31 by geymat           ###   ########.fr       */
+/*   Updated: 2025/12/01 14:38:06 by geymat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft.h"
 
 char	*ft_itoa(int n)
 {
+	const long	n_abs = ((n > 0) * 2 - 1) * (long) n;
 	char		*res;
 	long int	fact;
 	long int	i;
 
 	fact = 1;
 	i = n < 1;
-	while (fact <= (long) n * ((n > 0) * 2 - 1))
+	while (fact <= n_abs)
 	{
+		fact *= 10;
 		i++;
-		fact *= 10;
 	}
-	res = (char *) ft_calloc(i + 1, 1);
+	res = malloc((i + 1) * sizeof(char));
 	if (!res)
-		return (res);
+		return (NULL);
+	res[i] = 0;
 	fact = 1;
-	while (n / fact && res)
+	while (n / fact)
 	{
-		res[--i] = '0' + (long)(n / fact * ((n > 0) * 2 - 1) % 10);
+		res[--i] = '0' + n_abs / fact % 10;
 		fact *= 10;
 	}
-	if (n < 0 && res)
-		res[0] = '-';
-	else if (n == 0)
-		res[0] = '0';
+	if (n <= 0)
+		res[0] = '-' + (n == 0) * ('0' - '-');
 	return (res);
 }

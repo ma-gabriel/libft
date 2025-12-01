@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: geymat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:46:19 by geymat            #+#    #+#             */
-/*   Updated: 2023/11/12 14:39:20 by geymat           ###   ########.fr       */
+/*   Updated: 2025/12/01 14:56:42 by geymat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (f && lst && lst->content)
+	if (!f)
+		return ;
+	while (lst)
+	{
 		f(lst->content);
-	if (f && lst && lst->next)
-		ft_lstiter((lst->next), f);
+		lst = lst->next;
+	}
 }

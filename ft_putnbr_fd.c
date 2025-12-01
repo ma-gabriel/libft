@@ -6,33 +6,19 @@
 /*   By: geymat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 04:22:24 by geymat            #+#    #+#             */
-/*   Updated: 2023/11/10 05:23:39 by geymat           ###   ########.fr       */
+/*   Updated: 2025/12/01 15:47:17 by geymat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include "libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	temp;
+	const char	*str = ft_itoa(n);
 
-	if (n == -2147483648)
-	{
-		write(fd, "-2147483648", 11);
+	if (!str)
 		return ;
-	}
-	if (!n)
-	{
-		write(fd, "0", 1);
-		return ;
-	}
-	if (n < 0)
-	{
-		write(fd, "-", 1);
-		n *= -1;
-	}
-	if (n / 10)
-		ft_putnbr_fd(n / 10, fd);
-	temp = n % 10 + '0';
-	write (fd, &temp, 1);
+	ft_putstr_fd((char *) str, fd);
+	free((void *) str);
 }

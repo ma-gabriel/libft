@@ -38,7 +38,6 @@ char	*ft_strrchr(char *str, int c);
 int		ft_strncmp(const char *first, const char *second, size_t length);
 void	*ft_memchr(const void *memoryBlock, int searchedChar, size_t size);
 int		ft_memcmp(const void *str1, const void *str2, size_t n);
-char	*ft_strstr(char *str, char *to_find);
 int		ft_atoi(const char *str);
 char	*ft_strdup(const char *src);
 void	*ft_calloc(size_t num, size_t size);

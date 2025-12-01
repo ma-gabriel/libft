@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: geymat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 08:24:44 by geymat            #+#    #+#             */
-/*   Updated: 2023/11/12 14:41:42 by geymat           ###   ########.fr       */
+/*   Updated: 2025/12/01 14:52:46 by geymat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	if (lst && *lst && (*lst)->next)
-		ft_lstclear(&((*lst)->next), del);
-	if (*lst)
+	t_list	*tmp;
+
+	if (!lst || !(*lst))
+		return ;
+	while (*lst)
 	{
-		del((*lst)->content);
-		free(*lst);
+		tmp = *lst;
+		*lst = (*lst)->next;
+		ft_lstdelone(tmp, del);
 	}
-	*lst = (NULL);
+	*lst = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: geymat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 03:26:58 by geymat            #+#    #+#             */
-/*   Updated: 2023/11/16 14:25:28 by geymat           ###   ########.fr       */
+/*   Updated: 2025/12/01 15:38:11 by geymat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,22 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t count)
 {
-	size_t	i;
+	const int	direction = (src > dest) * 2 - 1;
+	char		*s1;
 
-	if (src == dest)
+	if (dest == src)
 		return (dest);
-	if ((unsigned char *) src > (unsigned char *) dest)
+	s1 = dest;
+	if (direction == -1)
 	{
-		i = 0;
-		while (i < count)
-		{
-			*(char *)dest = *(char *)(src + i);
-			dest ++;
-			i++;
-		}
-		return (dest - count);
+		s1 += count - 1;
+		src += count - 1;
 	}
-	i = (unsigned long int) count + 1;
-	dest += i - 2 ;
-	while (--i > 0)
+	while (count--)
 	{
-		*(char *)dest = *(char *)(src + i - 1);
-		dest --;
+		*s1 = *(char *)src;
+		src += direction;
+		s1 += direction;
 	}
-	return (++dest);
+	return (dest);
 }

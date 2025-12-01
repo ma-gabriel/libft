@@ -38,21 +38,21 @@ static void	*free_split(char **split)
 
 static char	**split_alloc(const char *s, char c)
 {
-	size_t	i;
+	size_t	nb_word;
 
 	if (!s)
 		return (NULL);
-	i = 0;
+	nb_word = 0;
 	while (*s)
 	{
-		while (*s == c && c != 0)
+		while (c && *s == c)
 			s++;
 		if (!*s)
 			break ;
 		s += len_word(s, c);
-		i++;
+		nb_word++;
 	}
-	return (ft_calloc(i + 1, sizeof(char *)));
+	return (ft_calloc(nb_word + 1, sizeof(char *)));
 }
 
 char	**ft_split(char const *s, char c)

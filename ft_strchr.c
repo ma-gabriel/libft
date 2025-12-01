@@ -6,21 +6,22 @@
 /*   By: geymat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 04:28:27 by geymat            #+#    #+#             */
-/*   Updated: 2023/11/17 15:36:08 by geymat           ###   ########.fr       */
+/*   Updated: 2025/12/01 17:27:34 by geymat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "libft.h"
 
 char	*ft_strchr(char *str, int c)
 {
-	size_t	i;
-
-	i = -1;
-	while (str[++i])
-		if (str[i] == (char) c)
-			return (str + i);
 	if (!((char) c))
-		return (str + i);
-	return (0);
+		return (str + ft_strlen(str));
+	while (*str)
+	{
+		if (*str == (char) c)
+			return (str);
+		str++;
+	}
+	return (NULL);
 }

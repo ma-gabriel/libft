@@ -6,7 +6,7 @@
 /*   By: geymat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 04:48:30 by geymat            #+#    #+#             */
-/*   Updated: 2023/11/16 19:20:50 by geymat           ###   ########.fr       */
+/*   Updated: 2025/12/01 17:16:55 by geymat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,15 @@ int	ft_strncmp(const char *first, const char *second, size_t length)
 {
 	size_t	i;
 
-	i = 0;
 	if (!length)
 		return (0);
-	if (!(first[i]))
-		return (-second[i]);
-	while (first[i] && i + 1 < length)
+	i = 0;
+	while (first[i] && i < length - 1)
 	{
 		if (first[i] - second[i])
 			return (((unsigned char) first[i]
-					- (unsigned char)second[i]));
+					- (unsigned char) second[i]));
 		i++;
 	}
-	return (((unsigned char) first[i] - (unsigned char)second[i]));
+	return (((unsigned char) first[i] - (unsigned char) second[i]));
 }

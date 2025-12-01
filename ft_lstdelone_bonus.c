@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: geymat <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 08:16:28 by geymat            #+#    #+#             */
-/*   Updated: 2023/11/10 08:22:42 by geymat           ###   ########.fr       */
+/*   Updated: 2025/12/01 14:52:55 by geymat           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,13 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	if (del && lst)
-		del(lst->content);
-	if (lst)
+	if (!lst)
+		return ;
+	if (!del)
+	{
 		free(lst);
+		return ;
+	}
+	del(lst->content);
+	free(lst);
 }
