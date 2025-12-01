@@ -15,18 +15,16 @@
 
 char	*ft_strtrim(char const *s, char const *set)
 {
-	const char	*save = s;
-	size_t		start;
+	const size_t	len = ft_strlen(s);
+	size_t			start;
+	size_t			end;
 
 	start = 0;
 	while (ft_strchr((char *) set, s[start]))
-	{
-		if (!s[start])
+		if (!s[start++])
 			return (ft_strdup(""));
-		start++;
-	}
-	s += ft_strlen(s) + 1;
-	while (ft_strchr((char *) set, *(s - 1)))
-		s--;
-	return (ft_substr(save, start, s - save - start));
+	end = 0;
+	while (ft_strchr((char *) set, s[len - 1 - end]))
+		end++;
+	return (ft_substr(s, start, len - end - start));
 }
