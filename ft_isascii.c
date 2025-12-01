@@ -10,6 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @brief reimplementation of the function isascii.
+ * Its behavior is described in the man page
+ */
 int	ft_isascii(int c)
 {
 	return (c >= 0 && c <= 127);

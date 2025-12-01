@@ -10,6 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @brief reimplementation of the function tolower.
+ * Its behavior is described in the man page
+ */
 int	ft_tolower(int c)
 {
 	return (c + 32 * (c >= 'A' && c <= 'Z'));

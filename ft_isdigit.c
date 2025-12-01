@@ -10,6 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @brief reimplementation of the function isdigit.
+ * Its behavior is described in the man page
+ */
 int	ft_isdigit(int c)
 {
 	return (c >= '0' && c <= '9');

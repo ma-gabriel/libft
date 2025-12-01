@@ -10,6 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @brief reimplementation of the function isalnum.
+ * Its behavior is described in the man page
+ */
 int	ft_isalnum(int c)
 {
 	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')

@@ -12,6 +12,10 @@
 
 #include <stdlib.h>
 
+/**
+ * @brief reimplementation of the function strlen.
+ * Its behavior is described in the man page
+ */
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;

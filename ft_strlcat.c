@@ -13,6 +13,10 @@
 #include <stdlib.h>
 #include "libft.h"
 
+/**
+ * @brief reimplementation of the function strlcat.
+ * Its behavior is described in the man page
+ */
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
 	const size_t	len_src = ft_strlen(src);

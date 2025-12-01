@@ -18,7 +18,7 @@ static size_t	len_word(char const *s, char c)
 	size_t	i;
 
 	i = 0;
-	while (s[0] == c && c != 0)
+	while (*s && *s == c)
 		s++;
 	while (s[i] && s[i] != c)
 		i++;
@@ -40,12 +40,10 @@ static char	**split_alloc(const char *s, char c)
 {
 	size_t	nb_word;
 
-	if (!s)
-		return (NULL);
 	nb_word = 0;
 	while (*s)
 	{
-		while (c && *s == c)
+		while (*s == c)
 			s++;
 		if (!*s)
 			break ;
@@ -55,6 +53,16 @@ static char	**split_alloc(const char *s, char c)
 	return (ft_calloc(nb_word + 1, sizeof(char *)));
 }
 
+/**
+ * Allocates memory (using malloc(3)) and returns an
+ * array of strings obtained by splitting ’s’ using
+ * the character ’c’ as a delimiter. The array must
+ * end with a NULL pointer.
+ * @param s: The string to be split.
+ * @param c: The delimiter character.
+ * @returns The array of new strings resulting from the split.
+ * NULL if the allocation fails.
+ */
 char	**ft_split(char const *s, char c)
 {
 	size_t		count;
@@ -68,14 +76,14 @@ char	**ft_split(char const *s, char c)
 	count = len_word(s, c);
 	while (count)
 	{
-		res[i] = malloc(count + 1);
-		if (!res[i])
-			return (free_split(res));
 		while (*s == c)
 			s++;
-		ft_strlcpy(res[i++], s, count + 1);
+		res[i] = ft_substr(s, 0, count);
+		if (!res[i])
+			return (free_split(res));
 		s += count;
 		count = len_word(s, c);
+		i++;
 	}
 	return (res);
 }

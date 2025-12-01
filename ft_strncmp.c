@@ -12,6 +12,10 @@
 
 #include <stdlib.h>
 
+/**
+ * @brief reimplementation of the function strncpm.
+ * Its behavior is described in the man page
+ */
 int	ft_strncmp(const char *first, const char *second, size_t length)
 {
 	const unsigned char	*s1 = (const unsigned char *) first;

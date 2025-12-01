@@ -13,6 +13,10 @@
 #include <stdlib.h>
 #include "libft.h"
 
+/**
+ * @brief reimplementation of the function strnstr.
+ * Its behavior is described in the man page
+ */
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	const size_t	little_len = ft_strlen(little);

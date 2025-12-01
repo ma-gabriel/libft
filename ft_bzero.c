@@ -12,6 +12,10 @@
 
 #include <stdlib.h>
 
+/**
+ * @brief reimplementation of the function bzero.
+ * Its behavior is described in the man page
+ */
 void	ft_bzero(char *str, size_t num)
 {
 	while (num--)

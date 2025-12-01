@@ -10,6 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @brief reimplementation of the function toupper.
+ * Its behavior is described in the man page
+ */
 int	ft_toupper(int c)
 {
 	return (c - 32 * (c >= 'a' && c <= 'z'));

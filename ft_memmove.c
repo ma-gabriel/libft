@@ -12,6 +12,10 @@
 
 #include <stdlib.h>
 
+/**
+ * @brief reimplementation of the function memmove.
+ * Its behavior is described in the man page
+ */
 void	*ft_memmove(void *dest, const void *src, size_t count)
 {
 	const int	direction = (src > dest) * 2 - 1;

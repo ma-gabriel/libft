@@ -13,6 +13,10 @@
 #include <stdlib.h>
 #include "libft.h"
 
+/**
+ * @brief reimplementation of the function strlcpy.
+ * Its behavior is described in the man page
+ */
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	const size_t	res = ft_strlen(src);

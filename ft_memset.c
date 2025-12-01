@@ -12,6 +12,10 @@
 
 #include <stdlib.h>
 
+/**
+ * @brief reimplementation of the function memset.
+ * Its behavior is described in the man page
+ */
 void	*ft_memset(void *str, int c, size_t num)
 {
 	while (num--)

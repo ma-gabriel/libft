@@ -13,6 +13,10 @@
 #include <stdlib.h>
 #include "libft.h"
 
+/**
+ * @brief reimplementation of the function strdup.
+ * Its behavior is described in the man page
+ */
 char	*ft_strdup(const char *src)
 {
 	const size_t	len = ft_strlen(src);
@@ -21,6 +25,6 @@ char	*ft_strdup(const char *src)
 	dest = malloc((len + 1) * sizeof(char));
 	if (!dest)
 		return (NULL);
-	ft_memcpy(dest, src, len + 1);
+	ft_memmove(dest, src, len + 1);
 	return (dest);
 }

@@ -13,6 +13,10 @@
 #include <stdlib.h>
 #include "libft.h"
 
+/**
+ * @brief reimplementation of the function calloc.
+ * Its behavior is described in the man page
+ */
 void	*ft_calloc(size_t num, size_t size)
 {
 	void	*res;

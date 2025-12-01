@@ -12,6 +12,10 @@
 
 #include <stdlib.h>
 
+/**
+ * @brief reimplementation of the function memchr.
+ * Its behavior is described in the man page
+ */
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	size_t	i;

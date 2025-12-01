@@ -12,6 +12,10 @@
 
 #include <stdlib.h>
 
+/**
+ * @brief reimplementation of the function memcmp.
+ * Its behavior is described in the man page
+ */
 int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {
 	const unsigned char	*s1 = str1;

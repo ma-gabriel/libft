@@ -12,6 +12,10 @@
 
 #include <stdlib.h>
 
+/**
+ * @brief reimplementation of the function memcpy.
+ * Its behavior is described in the man page
+ */
 void	*ft_memcpy(void *dest, const void *src, size_t count)
 {
 	char	*s1;

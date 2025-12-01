@@ -10,6 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @brief reimplementation of the function isprint.
+ * Its behavior is described in the man page
+ */
 int	ft_isprint(int c)
 {
 	return (c >= 32 && c <= 126);

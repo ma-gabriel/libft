@@ -12,6 +12,14 @@
 
 #include <stdlib.h>
 
+/**
+ * Allocates memory (using malloc(3)) and returns
+ * a string representing the integer received as an
+ * argument. Negative numbers must be handled.
+ * @param n: The integer to convert.
+ * @returns The string representing the integer.
+ * NULL if the allocation fails.
+ */
 char	*ft_itoa(int n)
 {
 	const long	n_abs = ((n > 0) * 2 - 1) * (long) n;

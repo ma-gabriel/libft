@@ -12,6 +12,10 @@
 
 #include <stdlib.h>
 
+/**
+ * @brief reimplementation of the function atoi.
+ * Its behavior is described in the man page
+ */
 int	ft_atoi(const char *str)
 {
 	size_t	i;
@@ -23,8 +27,10 @@ int	ft_atoi(const char *str)
 	sign = 1;
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
-	if ((str[i] == '+' || str[i] == '-') && str[i++] == '-')
+	if (str[i] == '-')
 		sign = -1;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		if (res * 10 + (str[i] - '0') < res)

@@ -13,6 +13,10 @@
 #include <stdlib.h>
 #include "libft.h"
 
+/**
+ * @brief reimplementation of the function strchr.
+ * Its behavior is described in the man page
+ */
 char	*ft_strchr(char *str, int c)
 {
 	if (!((char) c))
