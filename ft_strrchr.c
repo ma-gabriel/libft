@@ -18,7 +18,7 @@ char	*ft_strrchr(char *str, int c)
 	size_t	len;
 
 	len = ft_strlen(str);
-	while (len != __SIZE_MAX__)
+	while (len != (size_t) -1)
 	{
 		if (str[len] == (char) c)
 			return (str + len);

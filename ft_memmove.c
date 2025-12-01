@@ -19,12 +19,8 @@ void	*ft_memmove(void *dest, const void *src, size_t count)
 
 	if (dest == src)
 		return (dest);
-	s1 = dest;
-	if (direction == -1)
-	{
-		s1 += count - 1;
-		src += count - 1;
-	}
+	s1 = dest + (count - 1) * (direction == -1);
+	src += (count - 1) * (direction == -1);
 	while (count--)
 	{
 		*s1 = *(char *)src;

@@ -50,20 +50,18 @@ SRCS_BONUS = ft_lstadd_front_bonus.c \
 
 HEADERS = libft.h
 
-OBJECTS = $(addprefix .hidden/, $(SRCS:.c=.o))
+OBJECTS = $(addprefix ., $(SRCS:.c=.o))
 DEPS = $(OBJECTS:.o=.d)
-OBJECTS_BONUS = $(addprefix .hidden/, $(SRCS_BONUS:.c=.o))
+OBJECTS_BONUS = $(addprefix ., $(SRCS_BONUS:.c=.o))
 DEPS_BONUS = $(OBJECTS_BONUS:.o=.d)
 
 CFLAGS = -Wall -Wextra -Werror
 DEPFLAGS	= -MMD -MP
 
-.hidden/%.o: %.c
-	@mkdir .hidden -p
+.%.o: %.c
 	@$(CC) $(CFLAGS) $(DEPFLAGS) -c $< -o $@ -I.
 
-all:
-	@$(MAKE) --no-print-directory -s $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	echo objects done
@@ -71,10 +69,12 @@ $(NAME): $(OBJECTS)
 	echo $(NAME) done
 
 clean:
-	$(RM) -rf .hidden
+	@$(RM) -rf $(OBJECTS) $(OBJECTS_BONUS) $(DEPS) $(DEPS_BONUS)
+	echo objects and dependencies removed
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
+	echo $(NAME) removed
 
 bonus:
 	@$(MAKE) -s --no-print-directory $(NAME) SRCS="$(SRCS) $(SRCS_BONUS)"

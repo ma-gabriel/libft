@@ -17,21 +17,16 @@ char	*ft_strtrim(char const *s, char const *set)
 {
 	const char	*save = s;
 	size_t		start;
-	char		*res;
 
-	while (ft_strchr((char *) set, *s))
+	start = 0;
+	while (ft_strchr((char *) set, s[start]))
 	{
-		if (!*s)
+		if (!s[start])
 			return (ft_strdup(""));
-		s++;
+		start++;
 	}
-	start = s - save;
 	s += ft_strlen(s) + 1;
 	while (ft_strchr((char *) set, *(s - 1)))
 		s--;
-	res = malloc(ft_strlen(save) - start - ft_strlen(s) + 1);
-	if (!res)
-		return (NULL);
-	ft_strlcpy(res, save + start, ft_strlen(save) - start - ft_strlen(s) + 1);
-	return (res);
+	return (ft_substr(save, start, s - save - start));
 }
