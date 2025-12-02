@@ -13,45 +13,9 @@
 #include <stdlib.h>
 #include "libft.h"
 
-static size_t	len_word(char const *s, char c)
-{
-	size_t	i;
-
-	i = 0;
-	while (*s && *s == c)
-		s++;
-	while (s[i] && s[i] != c)
-		i++;
-	return (i);
-}
-
-static void	*free_split(char **split)
-{
-	size_t	i;
-
-	i = 0;
-	while (split[i])
-		free(split[i++]);
-	free(split);
-	return (NULL);
-}
-
-static char	**split_alloc(const char *s, char c)
-{
-	size_t	nb_word;
-
-	nb_word = 0;
-	while (*s)
-	{
-		while (*s == c)
-			s++;
-		if (!*s)
-			break ;
-		s += len_word(s, c);
-		nb_word++;
-	}
-	return (ft_calloc(nb_word + 1, sizeof(char *)));
-}
+static size_t	len_word(char const *s, char c);
+static char	**split_alloc(const char *s, char c);
+static void	*free_split(char **split);
 
 /**
  * Allocates memory (using malloc(3)) and returns an
@@ -86,4 +50,44 @@ char	**ft_split(char const *s, char c)
 		i++;
 	}
 	return (res);
+}
+
+static size_t	len_word(char const *s, char c)
+{
+	size_t	i;
+
+	i = 0;
+	while (*s && *s == c)
+		s++;
+	while (s[i] && s[i] != c)
+		i++;
+	return (i);
+}
+
+static char	**split_alloc(const char *s, char c)
+{
+	size_t	nb_word;
+
+	nb_word = 0;
+	while (*s)
+	{
+		while (*s == c)
+			s++;
+		if (!*s)
+			break ;
+		s += len_word(s, c);
+		nb_word++;
+	}
+	return (ft_calloc(nb_word + 1, sizeof(char *)));
+}
+
+static void	*free_split(char **split)
+{
+	size_t	i;
+
+	i = 0;
+	while (split[i])
+		free(split[i++]);
+	free(split);
+	return (NULL);
 }
