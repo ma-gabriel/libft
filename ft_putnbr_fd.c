@@ -23,7 +23,7 @@ static char	*ft_itoa_buffered(int n, char *buffer);
  */
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	str[11];
+	char	str[sizeof(int) * 10 / 4 + 2];
 
 	ft_itoa_buffered(n, str);
 	ft_putstr_fd((char *) str, fd);
